@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Names List</title>
+  <style>
+    #body {
+      font-family: 'Arial', sans-serif;
+      background: #e2e8f0;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #container {
+      max-width: 600px;
+      width: 100%;
+      margin: 30px auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    #header {
+      margin-top: 0;
+      color: #2d3748;
+      font-size: 2em;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    #list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #listItem {
+      padding: 15px;
+      border-bottom: 1px solid #d1d5db;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      color: #4a5568;
+    }
+
+    #deleteForm {
+      display: inline;
+    }
+
+    #deleteButton {
+      padding: 6px 12px;
+      font-size: 14px;
+      color: #ffffff;
+      background-color: #e53e3e;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    #deleteButton:hover {
+      background-color: #c53030;
+      transform: translateY(-1px);
+    }
+
+    #goBack {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 16px;
+      color: #4f46e5;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    #goBack:hover {
+      color: #4338ca;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body id="body">
+  <div id="container">
+    <h1 id="header">Names List</h1>
+    <ul id="list">
+      <% names.forEach(name => { %>
+        <li id="listItem">
+          <%= name %>
+          <form id="deleteForm" action="/delete" method="POST">
+            <input type="hidden" name="name" value="<%= name %>">
+            <button id="deleteButton" type="submit">Delete</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+    <a id="goBack" href="/">Go Back</a>
+  </div>
+</body>
+</html>
